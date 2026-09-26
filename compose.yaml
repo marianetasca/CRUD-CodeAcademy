@@ -1,0 +1,18 @@
+#O compose.yaml configura como o container da aplicação será executado. Ele usa o Dockerfile para construir a imagem e conecta a porta 8000 do computador à porta 80 do container.
+#O Compose diz como executar essa imagem como um serviço/container.
+#Quais serviços/containers fazem parte da minha aplicação?
+services:
+  api:
+    build: api/
+    ports:
+      - "8000:80"
+    volumes:
+      - api-data:/app/data
+
+  frontend:
+    build: frontend/
+    ports:
+      - "5500:80"
+
+volumes:
+  api-data:
